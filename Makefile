@@ -1,28 +1,11 @@
-check-deps:
-	./gradlew dependencyUpdates -Drevision=release
-
-dev:
-	./gradlew run
-
-setup:
-	gradle wrapper --gradle-version 8.5
-
-clean:
-	./gradlew clean
-
 build:
-	make clean
-	make lint
-	make test
-
-start: dev
+	./gradlew clean build
 
 install:
 	./gradlew installDist
 
 lint:
-	./gradlew checkstyleMain
-	./gradlew checkstyleTest
+	./gradlew checkstyleMain checkstyleTest
 
 test:
 	./gradlew test
@@ -30,4 +13,4 @@ test:
 report:
 	./gradlew jacocoTestReport
 
-.PHONY: build
+.PHONY: build frontend
