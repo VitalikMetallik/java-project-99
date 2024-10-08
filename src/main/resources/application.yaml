@@ -1,0 +1,26 @@
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+  output:
+    ansi:
+      enabled: always
+  datasource:
+    url: jdbc:h2:mem:project
+    username: "admin"
+    password: "123"
+
+server:
+  address: 0.0.0.0
+  port: ${PORT:8080}
+
+rsa:
+  private-key: classpath:certs/private.pem
+  public-key: classpath:certs/public.pem
+
+sentry:
+  dsn: https://776c115f8311a4c78e35b663cd1fa0b0@o4508054939697152.ingest.us.sentry.io/4508088442224641
+  tracesSampleRate: 1.0
+  exception-resolver-order: -2147483647

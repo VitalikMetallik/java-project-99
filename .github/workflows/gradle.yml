@@ -1,0 +1,29 @@
+name: Java CI
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build
+      - name: Publish code coverage
+        uses: paambaati/codeclimate-action@v3.2.0
+        env:
+          CC_TEST_REPORTER_ID: "9259b4022733b9927f1cec2d83c6cd994f79e5b9249d202a6effaf208bb6f45e"
+          JACOCO_SOURCE_PATH: src/main/java
+          SENTRY_AUTH_TOKEN: "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"
+        with:
+          coverageCommand: make report
+          coverageLocations: ${{github.workspace}}/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
