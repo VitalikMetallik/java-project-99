@@ -35,3 +35,24 @@ out/
 
 ### VS Code ###
 .vscode/
+/app/config/checkstyle/checkstyle.xml
+/app/gradle/wrapper/gradle-wrapper.jar
+/app/gradle/wrapper/gradle-wrapper.properties
+/app/src/main/java/hexlet/code/app/controller/api/WelcomeController.java
+/app/src/main/java/hexlet/code/app/model/BaseEntity.java
+/app/src/main/java/hexlet/code/app/model/User.java
+/app/src/main/java/hexlet/code/app/AppApplication.java
+/app/src/main/java/hexlet/code/Main.java
+/app/src/main/resources/application.properties
+/app/src/main/resources/application.yaml
+/app/src/main/resources/application-dev.yaml
+/app/src/main/resources/application-prod.yaml
+/app/src/test/java/hexlet/code/app/AppApplicationTests.java
+/app/.gitignore
+/app/build.gradle
+/app/gradlew
+/app/gradlew.bat
+/app/Makefile
+/app/settings.gradle
+/app/gradle/wrapper/gradle-wrapper.jar
+/app/gradle/wrapper/gradle-wrapper.jar
