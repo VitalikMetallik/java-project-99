@@ -105,15 +105,17 @@ public class TasksControllerTests {
 
         var result = mockMvc.perform(MockMvcRequestBuilders.get(
                 "/api/tasks?titleCont=" + firstTask.getName()
-                + "&assigneeId=" + firstTask.getAssignee().getId()
-                + "&status=" + firstTask.getTaskStatus().getSlug()
-                + "&labelId=" + firstTask.getLabels().stream().findFirst().get().getId()
+                        + "&assigneeId=" + firstTask.getAssignee().getId()
+                        + "&status=" + firstTask.getTaskStatus().getSlug()
+                        + "&labelId=" + firstTask.getLabels().stream().findFirst().get().getId()
         ).with(token)).andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
-        assertThat(result.getResponse().getContentAsString()).contains(firstTask.getName());
-        assertThat(result.getResponse().getContentAsString()).contains(firstTask.getAssignee().getId().toString());
-        assertThat(result.getResponse().getContentAsString()).contains(firstTask.getTaskStatus().getSlug());
-        assertThat(result.getResponse().getContentAsString()).contains(firstTask.getLabels()
-                .stream().findFirst().get().getId().toString());
+
+        var content = result.getResponse().getContentAsString();
+
+        assertThat(content).contains(firstTask.getName());
+        assertThat(content).contains(firstTask.getAssignee().getId().toString());
+        assertThat(content).contains(firstTask.getTaskStatus().getSlug());
+        assertThat(content).contains(firstTask.getLabels().stream().findFirst().get().getId().toString());
     }
 
     @Test
@@ -133,7 +135,6 @@ public class TasksControllerTests {
                 )
                 .andExpect(MockMvcResultMatchers.status().isCreated());
         var task = taskRepository.findByName(data.getTitle()).get();
-        assertThat(task).isNotNull();
         assertThat(task.getName()).isEqualTo(data.getTitle());
         assertThat(task.getIndex()).isEqualTo(data.getIndex());
         assertThat(task.getDescription()).isEqualTo(data.getContent());

@@ -1,4 +1,8 @@
 spring:
+  application:
+    name: app
+  security:
+    ignored: /**
   jpa:
     show-sql: true
     hibernate:
