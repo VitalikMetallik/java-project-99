@@ -1,17 +1,18 @@
 package hexlet.code.dto.taskStatus;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
 
-@Getter
 @Setter
-@AllArgsConstructor
+@Getter
 public class TaskStatusDTO {
     private Long id;
+
     private String name;
+
     private String slug;
+
     private LocalDate createdAt;
 }
